@@ -5,9 +5,9 @@ const PORT = 3000; //puede cambiar
 
 //array
 let librosBiblicos = [
-    {id: 1 , nombre:'Genesis' , autor: 'Moises'},
-    {id: 2 , nombre:'Exodo' , autor: 'Moises'},
-    {id: 3 , nombre:'Levitico' , autor: 'Moises'},  
+    {id: 1 , nombre:'Genesis' , autor: 'Moises', anioPublicacion:2020},
+    {id: 2 , nombre:'Exodo' , autor: 'Moises' , anioPublicacion:2024},
+    {id: 3 , nombre:'Levitico' , autor: 'Moises' , anioPublicacion:1990},  
 ];
 //manejo de JSON
 app.use(express.json());
