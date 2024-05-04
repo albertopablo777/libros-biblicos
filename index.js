@@ -61,13 +61,13 @@ app.get('/libros/publicacion/:anio', (req, res) => {
         res.status(404).json({mensaje : 'no se han encontrado libros publicados en ese anio'});
     }
 });
-//PRACTICA1 : bienvenida con su nombre y su profesion actual
+//PRACTICA2 : bienvenida con su nombre y su profesion actual
 app.get('/welcome/:name/:profession', (req, res) => {
     const name = req.params.name;
     const profession = req.params.profession;
     res.send(`Hola soy ${name}! Yo trabajo como ${profession}.`);
 });
-// endpoint 8: Obtener libros por autor
+// PRACTICA2 : Obtener libros por autor
 app.get('/libros/autor/:autor', (req, res) => {
     const autor = req.params.autor;
     const librosByAutor = librosBiblicos.filter((libro) => libro.autor === autor);
@@ -77,12 +77,12 @@ app.get('/libros/autor/:autor', (req, res) => {
        res.status(404).json({ mensaje: 'No se han encontrado libros de este autor' });
     }
 });
-// endpoint 9: Obtener la cantidad total de libros
+// PRACTICA2 : Obtener la cantidad total de libros
 app.get('/total', (req, res) => {
     const totallibros = librosBiblicos.length;
     res.json({totallibros });
 });
-//endpoint 10: recuperar libros por su nombre
+//PRACTICA2 : recuperar libros por su nombre
 app.get('/libros/nombre/:nombre', (req, res) => {
     const nombre = req.params.nombre;
     const librosByNombre = librosBiblicos.filter((libro) => libro.nombre === nombre);
@@ -92,7 +92,7 @@ app.get('/libros/nombre/:nombre', (req, res) => {
       res.status(404).json({ mensaje: 'No se han encontrado libros con este nombre' });
     }
 });
-//endpoint 10: ordenar libros por nombre
+//PRACTICA2 : ordenar libros por nombre
 app.get('/sorted', (req, res) => {
     const sortedLibros = librosBiblicos.sort((a, b) => a.nombre.localeCompare(b.nombre));
     res.json(sortedLibros);
