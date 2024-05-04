@@ -61,6 +61,42 @@ app.get('/libros/publicacion/:anio', (req, res) => {
         res.status(404).json({mensaje : 'no se han encontrado libros publicados en ese anio'});
     }
 });
+//PRACTICA1 : bienvenida con su nombre y su profesion actual
+app.get('/welcome/:name/:profession', (req, res) => {
+    const name = req.params.name;
+    const profession = req.params.profession;
+    res.send(`Hola soy ${name}! Yo trabajo como ${profession}.`);
+});
+// endpoint 8: Obtener libros por autor
+app.get('/libros/autor/:autor', (req, res) => {
+    const autor = req.params.autor;
+    const librosByAutor = librosBiblicos.filter((libro) => libro.autor === autor);
+    if (librosByAutor.length > 0) {
+      res.json(librosByAutor);
+    } else {
+       res.status(404).json({ mensaje: 'No se han encontrado libros de este autor' });
+    }
+});
+// endpoint 9: Obtener la cantidad total de libros
+app.get('/total', (req, res) => {
+    const totallibros = librosBiblicos.length;
+    res.json({totallibros });
+});
+//endpoint 10: recuperar libros por su nombre
+app.get('/libros/nombre/:nombre', (req, res) => {
+    const nombre = req.params.nombre;
+    const librosByNombre = librosBiblicos.filter((libro) => libro.nombre === nombre);
+    if (librosByNombre.length > 0) {
+      res.json(librosByNombre);
+    } else {
+      res.status(404).json({ mensaje: 'No se han encontrado libros con este nombre' });
+    }
+});
+//endpoint 10: ordenar libros por nombre
+app.get('/sorted', (req, res) => {
+    const sortedLibros = librosBiblicos.sort((a, b) => a.nombre.localeCompare(b.nombre));
+    res.json(sortedLibros);
+});
 
 app.listen(PORT, () => {
     console.log("Servidor corriendo en el puerto http://localhost:" + PORT);
